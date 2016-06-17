@@ -29,19 +29,29 @@ void Insert(int data, int n){
   
 }
 void Print(){
+  int numberOfNodes = 0;
   Node* temp = head;
   while(temp != NULL){
     cout << temp -> data << "\t";
+    numberOfNodes++;
     temp = temp -> next;
   }
-  cout << "\n";
+  cout << "Nodes = " << numberOfNodes << "\n";
 }
 void Delete(int n){
   Node* temp1 = head;
-  for(int i = 0; i < n-2; i++){
-    temp1 = temp1 -> next; 
-  }
   
+  // if deleting the first node
+  if(n == 1){
+    head = temp1 -> next; // head points to second node
+    delete temp1; // deleting temp1 node
+    return;   
+  }
+  // if deleting the nth node
+  for(int i = 0; i < n-2; i++){
+    //if(n > )
+    temp1 = temp1 -> next;
+  }
   Node* temp2 = temp1 -> next;  // create a temp2 node to point to next node - nth node
   temp1 -> next = temp2 -> next; // n+1 th node
   delete temp2;
@@ -60,13 +70,14 @@ int main(){
   
   Delete(3);
   Print();
-
+  
 }
 
 
 // OUTPUT
 
 /*
-2       4       6       8       9 
-2       4       8       9 
+4:19am - nam ran 73 lines of C++ (finished in 790ms):
+2       4       6       8       9       Nodes = 5 
+2       4       8       9       Nodes = 4 
 */
